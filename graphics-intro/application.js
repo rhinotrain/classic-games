@@ -13,7 +13,14 @@ var makeWicket = function(x,y) {
     ctx.fillRect(x, y+5, 15, 200)
 }
 
-
-
 makeWicket(50,200)
 makeWicket(600,200)
+
+var makeCricketBall = function(x,y) {
+    ctx.fillStyle = 'darkred'
+    ctx.beginPath()
+    ctx.arc(x, y, 25, 0, 2 * Math.PI)
+    ctx.fill()
+}
+
+makeCricketBall(450,300)
