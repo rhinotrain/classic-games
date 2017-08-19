@@ -13,9 +13,6 @@ var makeWicket = function(x,y) {
     ctx.fillRect(x, y+5, 15, 200)
 }
 
-makeWicket(50,200)
-makeWicket(600,200)
-
 var makeCricketBall = function(x,y) {
     ctx.fillStyle = 'darkred'
     ctx.beginPath()
@@ -23,4 +20,15 @@ var makeCricketBall = function(x,y) {
     ctx.fill()
 }
 
-makeCricketBall(450,300)
+var ballX = 0
+
+var drawFrame = function() {
+    ctx.fillStyle = 'white'
+    ctx.fillRect(0,0,800,600)
+    makeWicket(50,200)
+    makeCricketBall(ballX, 250)
+    ballX = ballX + 1
+    makeWicket(600,200)
+    window.requestAnimationFrame(drawFrame)
+}
+window.requestAnimationFrame(drawFrame)
