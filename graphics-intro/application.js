@@ -29,6 +29,10 @@ var drawFrame = function() {
     makeCricketBall(ballX, 250)
     ballX = ballX + 1
     makeWicket(600,200)
-    window.requestAnimationFrame(drawFrame)
 }
-window.requestAnimationFrame(drawFrame)
+
+var animateNextFrame = function() {
+    drawFrame()
+    window.requestAnimationFrame(animateNextFrame)
+}
+window.requestAnimationFrame(animateNextFrame)
