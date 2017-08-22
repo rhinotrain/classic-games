@@ -58,13 +58,28 @@ var drawPowerLines = function() {
     do {  
         drawPylon(x, 360)
         drawPowerCable(x+15, 365)
-        powerLineCount +=1
+        powerLineCount += 1
         x = x + 50
     } while (powerLineCount < 16)
 }
 
+var drawWindow = function(x,y) {
+    ctx.fillStyle = 'blue'
+    ctx.fillRect(x,y,10,10)
+}
+
+var drawWindowColumn = function(x, y, length) {
+    ctx.fillStyle = 'blue'
+    var windowCount = 0
+    do {
+        drawWindow(x,y)
+        y = y + 20
+        windowCount += 1
+    } while (windowCount <= length)
+}
 drawSkyBox()
 drawGround()
 drawRoad()
 drawCity()
 drawPowerLines()
+drawWindowColumn(160, 210, 8)
