@@ -16,6 +16,17 @@ var ground = function() {
 var road = function() {
     ctx.fillStyle = 'darkgrey'
     ctx.fillRect(0,400,800,40)
+
+    ctx.fillStyle = 'yellow'
+    var roadTimer = 0
+    var a1 = 0
+
+    do {
+            ctx.fillRect (a1,415,20,5)
+            a1 = a1 + 40
+            roadTimer += 1
+            
+       } while (roadTimer < 21)
 }
 
 var city = function() {
@@ -58,7 +69,7 @@ var powerLines = function() {
         powerLinesTimer +=1
         x1 =  x1 + 50
         x2 = x2 + 50
-       } while (powerLinesTimer<16)
+       } while (powerLinesTimer < 16)
 }
 
 skyBox()
