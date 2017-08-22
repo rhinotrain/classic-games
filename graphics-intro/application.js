@@ -2,7 +2,6 @@ console.log("Hello! Welcome to your first graphics programming!")
 
 var canvas = document.getElementById("bob")
 var ctx = canvas.getContext('2d')
-var powerLinesTimer = 0
 
 var skyBox = function() {
     ctx.fillStyle = 'cyan'
@@ -30,26 +29,36 @@ var city = function() {
 
 var powerLines = function() {
     ctx.fillStyle = 'brown'
-    
-    ctx.fillRect(0,360,10,45)
-    ctx.fillRect(-10,365,30,5)
-    
-    ctx.fillRect(50,360,10,45)
-    ctx.fillRect(40,365,30,5)
+    var powerLinesTimer = 0
+    var x1 = 0
+    var y1 = 360
+    var x2 = 15
+    var y2 = 365
 
-    ctx.beginPath()
-    ctx.moveTo(15, 365)
-    ctx.lineTo(25,375)
-    ctx.lineTo(35,375)
-    ctx.lineTo(45, 365)
-    ctx.stroke()
+    do {
+        ctx.fillRect(x1,y1,10,45)
+        ctx.fillRect(x1 - 10,y1 + 5,30,5)
+        
+        ctx.fillRect(x1 + 50,y1,10,45)
+        ctx.fillRect(x1 + 40,y1 + 5,30,5)
 
-    ctx.beginPath()
-    ctx.moveTo(65, 365)
-    ctx.lineTo(75,375)
-    ctx.lineTo(85,375)
-    ctx.lineTo(95, 365)
-    ctx.stroke()
+        ctx.beginPath()
+        ctx.moveTo(x2,y2)
+        ctx.lineTo(x2 + 10,y2 + 10)
+        ctx.lineTo(x2 + 20,y2 + 10)
+        ctx.lineTo(x2 + 30,y2)
+        ctx.stroke()
+
+        ctx.beginPath()
+        ctx.moveTo(x2 + 50,y2)
+        ctx.lineTo(x2 + 60,y2 + 10)
+        ctx.lineTo(x2 + 70,y2 + 10)
+        ctx.lineTo(x2 + 80,y2)
+        ctx.stroke()
+        powerLinesTimer +=1
+        x1 =  x1 + 50
+        x2 = x2 + 50
+       } while (powerLinesTimer<16)
 }
 
 skyBox()
