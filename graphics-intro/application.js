@@ -30,14 +30,15 @@ var drawRoad = function() {
 
 var drawCity = function() {
     ctx.fillStyle = 'grey'
-    ctx.fillRect(150,200,100,200)
-    ctx.fillRect(280,150,110,250)
-    ctx.fillRect(400,220,90,180)
-    ctx.fillRect(500,150,110,250)
-    ctx.fillRect(325,100,20,50)
+    ctx.fillRect(150, 200, 100, 200)
+    ctx.fillRect(280, 150, 110, 250)
+    ctx.fillRect(400, 220, 90, 180)
+    ctx.fillRect(500, 150, 110, 250)
+    ctx.fillRect(325, 100, 20, 50)
 }
 
 var drawPylon = function(x,y) {
+    ctx.fillStyle = 'brown'
     ctx.fillRect(x,y,10,45)
     ctx.fillRect(x - 10,y + 5,30,5)
 }
@@ -52,7 +53,6 @@ var drawPowerCable = function(x,y) {
 }
 
 var drawPowerLines = function() {
-    ctx.fillStyle = 'brown'
     var powerLineCount = 0
     var x = 0
     do {  
@@ -68,18 +68,28 @@ var drawWindow = function(x,y) {
     ctx.fillRect(x,y,10,10)
 }
 
-var drawWindowColumn = function(x, y, length) {
-    ctx.fillStyle = 'blue'
+var drawWindowRow = function(x, y, length) {
     var windowCount = 0
     do {
         drawWindow(x,y)
-        y = y + 20
+        x = x + 20
         windowCount += 1
     } while (windowCount <= length)
 }
+
+var drawWindowGrid = function(x, y, width, height) {
+    var windowCount = 0
+    do {
+        drawWindowRow(x,y,height)
+        y = y + 20
+        windowCount += 1
+    } while (windowCount <= width)
+}
+
 drawSkyBox()
 drawGround()
 drawRoad()
 drawCity()
+drawWindowGrid(160, 210, 8, 3)
+drawWindowGrid(290, 160, 11, 4)
 drawPowerLines()
-drawWindowColumn(160, 210, 8)
