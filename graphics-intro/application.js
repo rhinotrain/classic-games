@@ -1,4 +1,4 @@
-console.log("Hello! Welcome to your first graphics programming!")
+console.log("Hello! Merge the window functions guy!")
 
 var canvas = document.getElementById("bob")
 var ctx = canvas.getContext('2d')
@@ -74,16 +74,16 @@ var drawWindowRow = function(x, y, length) {
         drawWindow(x,y)
         x = x + 20
         windowCount += 1
-    } while (windowCount <= length)
+    } while (windowCount < length)
 }
 
-var drawWindowGrid = function(x, y, width, height) {
+var drawWindowGrid = function(x, y, height, width) {
     var windowCount = 0
     do {
-        drawWindowRow(x,y,height)
+        drawWindowRow(x,y,width)
         y = y + 20
         windowCount += 1
-    } while (windowCount <= width)
+    } while (windowCount < height)
 }
 
 drawSkyBox()
@@ -91,5 +91,6 @@ drawGround()
 drawRoad()
 drawCity()
 drawWindowGrid(160, 210, 8, 3)
+drawWindowGrid(290, 160, 11, 4)
 drawWindowGrid(290, 160, 11, 4)
 drawPowerLines()
