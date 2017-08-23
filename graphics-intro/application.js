@@ -13,8 +13,15 @@ var drawGround = function() {
     ctx.fillRect(0,400,800,200)
 }
 
-var drawTrees = function(x, y) {
-    ctx.fillStyle = 'darkgreen'
+var drawTree = function(x, y, isDarkGreen) {
+    ctx.fillStyle = '#481a05' // stalk
+    ctx.fillRect(x + 5, y - 5, 10, 10)
+
+    if (isDarkGreen) {
+        ctx.fillStyle = '#07410a'
+    } else {
+        ctx.fillStyle = '#026c0f'
+    }
     ctx.beginPath() // top bushel
     ctx.moveTo(x, y)
     ctx.lineTo(x + 10, y - 25)
@@ -26,25 +33,21 @@ var drawTrees = function(x, y) {
     ctx.lineTo(x + 10, y - 30)
     ctx.lineTo(x + 20, y - 5)
     ctx.fill()
-
-    ctx.fillStyle = 'darkbrown' // stalk
-    ctx.fillRect(x + 5, y - 5, 10, 10)
 }
 
 var drawFrontLineOfTrees = function(x, y, length) {
     var treeCount = 0
     do {
-        drawTrees(x, y)
+        drawTree(x, y, false)
         x = x + 25
         treeCount += 1
-       } while (length > treeCount)
+    } while (length > treeCount)
 }
 
 var drawBackLineOfTrees = function(x, y, length) {
-    ctx.fillStyle = 'darkgreen'
     var treeCount = 0
     do {
-        drawTrees(x, y)
+        drawTree(x, y, true)
         x = x + 25
         treeCount += 1
     } while (length > treeCount)
@@ -105,21 +108,21 @@ var drawWindow = function(x,y) {
     ctx.fillRect(x,y,10,10)
 }
 
-var drawWindowGrid = function(x, y, height, width) {
+var drawWindowGrid = function(xStart, yStart, height, width) {
     var windowXCount = 0
+    var x = xStart
     do {
         windowXCount += 1
         var windowYCount = 0
+        var y = yStart
         do {
             drawWindow(x, y)
             y = y + 20
             windowYCount += 1
         } while (windowYCount < height)
         x = x + 20
-        y = y - (20 * height)
     } while (windowXCount < width)
 }
-
 
 drawSkyBox()
 drawGround()
