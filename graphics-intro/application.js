@@ -92,15 +92,12 @@ var drawPowerCable = function(x,y) {
     ctx.stroke()
 }
 
-var drawPowerLines = function() {
-    var powerLineCount = 0
-    var x = 0
-    do {  
-        drawPylon(x, 360)
-        drawPowerCable(x+15, 365)
-        powerLineCount += 1
+var drawPowerLines = function(x, y, count) {
+    for (var powerLineCount = 0; powerLineCount < count; powerLineCount += 1) {
+        drawPylon(x, y)
+        drawPowerCable(x + 15, y + 5)
         x = x + 50
-    } while (powerLineCount < 17)
+    }
 }
 
 var drawWindow = function(x,y) {
@@ -134,4 +131,4 @@ drawWindowGrid(160, 210, 9, 3)
 drawWindowGrid(290, 160, 12, 4)
 drawWindowGrid(410, 230, 8, 3)
 drawWindowGrid(510, 160, 12, 4)
-drawPowerLines()
+drawPowerLines(0, 360, 17)
