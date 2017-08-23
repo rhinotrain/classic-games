@@ -123,11 +123,13 @@ var drawWindowGrid = function(xStart, yStart, height, width) {
 
 var drawCar = function(x, y) {
     ctx.fillStyle = 'red'
-    ctx.fillRect(x, y, 40, 40)
+    ctx.fillRect(x, y, 40, 20)
+
+    ctx.fillRect(x+10, y-10, 20, 20)
 }
 
 var carX = -20
-var carY = 400
+var carY = 415
 var carGoingForward = true
 
 var drawFrame = function () { 
@@ -152,12 +154,12 @@ var drawFrame = function () {
 
     if (carX > 800) {
         carGoingForward = false
-        carY = carY - 20
+        carY = carY - 25
     }
 
     if (carX < -20) {
         carGoingForward = true
-        carY = carY + 20
+        carY = carY + 25
     }
 } 
 
