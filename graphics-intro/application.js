@@ -64,33 +64,34 @@ var drawPowerLines = function() {
 }
 
 var drawWindow = function(x,y) {
+    console.log("drawWindow", x, y)
     ctx.fillStyle = 'blue'
     ctx.fillRect(x,y,10,10)
 }
 
-var drawWindowRow = function(x, y, length) {
-    var windowCount = 0
+var drawWindowGrid = function(x, y, height, width) {
+    var windowXCount = 0
     do {
-        drawWindow(x,y)
+        windowXCount += 1
+        var windowYCount = 0
+        do {
+            console.log("counts", windowXCount, windowYCount)
+            drawWindow(x, y)
+            y = y + 20
+            windowYCount += 1
+        } while (windowYCount < height)
         x = x + 20
-        windowCount += 1
-    } while (windowCount < length)
+        y = y - (20 * height)
+    } while (windowXCount < width)
 }
 
-var drawWindowGrid = function(x, y, height, width) {
-    var windowCount = 0
-    do {
-        drawWindowRow(x,y,width)
-        y = y + 20
-        windowCount += 1
-    } while (windowCount < height)
-}
 
 drawSkyBox()
 drawGround()
 drawRoad()
 drawCity()
-drawWindowGrid(160, 210, 8, 3)
-drawWindowGrid(290, 160, 11, 4)
-drawWindowGrid(290, 160, 11, 4)
+drawWindowGrid(160, 210, 9, 3)
+drawWindowGrid(290, 160, 12, 4)
+drawWindowGrid(410, 230, 8, 3)
+drawWindowGrid(510, 160, 12, 4)
 drawPowerLines()
