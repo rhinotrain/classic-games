@@ -121,14 +121,48 @@ var drawWindowGrid = function(xStart, yStart, height, width) {
     } while (windowXCount < width)
 }
 
-drawSkyBox()
-drawGround()
-drawBackLineOfTrees(-15, 395, 34)
-drawFrontLineOfTrees(0, 395, 33)
-drawRoad()
-drawCity()
-drawWindowGrid(160, 210, 9, 3)
-drawWindowGrid(290, 160, 12, 4)
-drawWindowGrid(410, 230, 8, 3)
-drawWindowGrid(510, 160, 12, 4)
-drawPowerLines(0, 360, 17)
+var drawCar = function(x, y) {
+    ctx.fillStyle = 'red'
+    ctx.fillRect(x, y, 40, 40)
+}
+
+var carX = -20
+var carY = 400
+var carGoingForward = true
+
+var drawFrame = function () { 
+    drawSkyBox()
+    drawGround()
+    drawBackLineOfTrees(-15, 395, 34)
+    drawFrontLineOfTrees(0, 395, 33)
+    drawRoad()
+    drawCity()
+    drawWindowGrid(160, 210, 9, 3)
+    drawWindowGrid(290, 160, 12, 4)
+    drawWindowGrid(410, 230, 8, 3)
+    drawWindowGrid(510, 160, 12, 4)
+    drawPowerLines(0, 360, 17)
+    drawCar(carX, carY)
+
+    if (carGoingForward) {
+        carX = carX + 5
+    } else {
+        carX = carX - 5
+    }
+
+    if (carX > 800) {
+        carGoingForward = false
+        carY = carY - 20
+    }
+
+    if (carX < -20) {
+        carGoingForward = true
+        carY = carY + 20
+    }
+} 
+
+var animateNextFrame = function() {
+    drawFrame()
+    window.requestAnimationFrame(animateNextFrame)
+}
+window.requestAnimationFrame(animateNextFrame)
