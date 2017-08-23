@@ -9,8 +9,26 @@ var drawSkyBox = function() {
 }
 
 var drawGround = function() {
-    ctx.fillStyle = 'darkgreen'
+    ctx.fillStyle = 'green'
     ctx.fillRect(0,400,800,200)
+}
+
+var drawTrees = function(x,y) {
+    ctx.fillStyle = 'darkgreen'
+    ctx.beginPath() // top bushel
+    ctx.moveTo(x, y)
+    ctx.lineTo(x + 10, y - 25)
+    ctx.lineTo(x + 20, y)
+    ctx.fill()
+
+    ctx.beginPath() // bottom bushel
+    ctx.moveTo(x, y - 5)
+    ctx.lineTo(x + 10, y - 30)
+    ctx.lineTo(x + 20, y - 5)
+    ctx.fill()
+
+    ctx.fillStyle = 'darkbrown' // stalk
+    ctx.fillRect(x + 5, y - 5, 10, 10)
 }
 
 var drawRoad = function() {
@@ -64,7 +82,6 @@ var drawPowerLines = function() {
 }
 
 var drawWindow = function(x,y) {
-    console.log("drawWindow", x, y)
     ctx.fillStyle = 'blue'
     ctx.fillRect(x,y,10,10)
 }
@@ -75,7 +92,6 @@ var drawWindowGrid = function(x, y, height, width) {
         windowXCount += 1
         var windowYCount = 0
         do {
-            console.log("counts", windowXCount, windowYCount)
             drawWindow(x, y)
             y = y + 20
             windowYCount += 1
@@ -88,6 +104,7 @@ var drawWindowGrid = function(x, y, height, width) {
 
 drawSkyBox()
 drawGround()
+drawTrees(50, 300)
 drawRoad()
 drawCity()
 drawWindowGrid(160, 210, 9, 3)
