@@ -13,7 +13,7 @@ var drawGround = function() {
     ctx.fillRect(0,400,800,200)
 }
 
-var drawTrees = function(x,y) {
+var drawTrees = function(x, y) {
     ctx.fillStyle = 'darkgreen'
     ctx.beginPath() // top bushel
     ctx.moveTo(x, y)
@@ -29,6 +29,25 @@ var drawTrees = function(x,y) {
 
     ctx.fillStyle = 'darkbrown' // stalk
     ctx.fillRect(x + 5, y - 5, 10, 10)
+}
+
+var drawFrontLineOfTrees = function(x, y, length) {
+    var treeCount = 0
+    do {
+        drawTrees(x, y)
+        x = x + 25
+        treeCount += 1
+       } while (length > treeCount)
+}
+
+var drawBackLineOfTrees = function(x, y, length) {
+    ctx.fillStyle = 'darkgreen'
+    var treeCount = 0
+    do {
+        drawTrees(x, y)
+        x = x + 25
+        treeCount += 1
+    } while (length > treeCount)
 }
 
 var drawRoad = function() {
@@ -78,7 +97,7 @@ var drawPowerLines = function() {
         drawPowerCable(x+15, 365)
         powerLineCount += 1
         x = x + 50
-    } while (powerLineCount < 16)
+    } while (powerLineCount < 17)
 }
 
 var drawWindow = function(x,y) {
@@ -104,7 +123,8 @@ var drawWindowGrid = function(x, y, height, width) {
 
 drawSkyBox()
 drawGround()
-drawTrees(50, 300)
+drawBackLineOfTrees(-15, 395, 34)
+drawFrontLineOfTrees(0, 395, 33)
 drawRoad()
 drawCity()
 drawWindowGrid(160, 210, 9, 3)
