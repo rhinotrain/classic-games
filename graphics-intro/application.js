@@ -157,7 +157,10 @@ var carRedX = -20
 var carRedY = 415
 var carBlueX = 810
 var carBlueY = 395
+var whiteCloudX = 80
+var whiteCloudY = 100
 var carGoingForward = true
+var whiteCloudGoingForward = true
 
 var drawFrame = function () { 
     drawSkyBox()
@@ -165,13 +168,28 @@ var drawFrame = function () {
     drawBackLineOfTrees(-15, 395, 34)
     drawFrontLineOfTrees(0, 395, 33)
     drawRoad()
+    drawWhiteCloud(whiteCloudX, whiteCloudY)
+
+     if (whiteCloudGoingForward) {
+        whiteCloudX = whiteCloudX + 0.5
+    } else {
+        whiteCloudX = whiteCloudX - 0.5
+    }
+
+    if (whiteCloudX > 830) {
+        whiteCloudGoingForward = false
+    }
+
+    if (whiteCloudX < -80) {
+         whiteCloudGoingForward = true
+    }
+
     drawCity()
     drawWindowGrid(160, 210, 9, 3)
     drawWindowGrid(290, 160, 12, 4)
     drawWindowGrid(410, 230, 8, 3)
     drawWindowGrid(510, 160, 12, 4)
     drawPowerLines(0, 360, 17)
-    drawWhiteCloud(50,50)
     drawCarRed(carRedX, carRedY)
    
     if (carGoingForward) {
