@@ -121,15 +121,42 @@ var drawWindowGrid = function(xStart, yStart, height, width) {
     } while (windowXCount < width)
 }
 
-var drawCar = function(x, y) {
+var drawWhiteCloud = function(x, y) {
+
+    ctx.fillStyle = 'grey'
+    ctx.beginPath()
+    ctx.arc(x, y + 10, 30, 0, Math.PI * 2, true)
+    ctx.arc(x + 20, y , 30, 0, Math.PI * 2, true)
+    ctx.arc(x + 40, y + 10, 30, 0, Math.PI * 2, true)
+    ctx.fill()
+
+    ctx.fillStyle = 'white'
+    ctx.beginPath()
+    ctx.arc(x, y, 30, 0, Math.PI * 2, true)
+    ctx.arc(x + 20, y - 10, 30, 0, Math.PI * 2, true)
+    ctx.moveTo(x + 40, y)
+    ctx.arc(x + 40, y, 30, 0, Math.PI * 2, true)
+    ctx.fill()
+}
+
+var drawCarRed = function(x, y) {
     ctx.fillStyle = 'red'
     ctx.fillRect(x, y, 40, 20)
 
     ctx.fillRect(x+10, y-10, 20, 20)
 }
 
-var carX = -20
-var carY = 415
+var drawCarBlue = function(x, y) {
+    ctx.fillStyle = 'blue'
+    ctx.fillRect(x, y, 40, 20)
+
+    ctx.fillRect(x+10, y-10, 20, 20)
+}   
+
+var carRedX = -20
+var carRedY = 415
+var carBlueX = 810
+var carBlueY = 395
 var carGoingForward = true
 
 var drawFrame = function () { 
@@ -144,24 +171,25 @@ var drawFrame = function () {
     drawWindowGrid(410, 230, 8, 3)
     drawWindowGrid(510, 160, 12, 4)
     drawPowerLines(0, 360, 17)
-    drawCar(carX, carY)
-
+    drawWhiteCloud(50,50)
+    drawCarRed(carRedX, carRedY)
+   
     if (carGoingForward) {
-        carX = carX + 5
+        carRedX = carRedX + 5
     } else {
-        carX = carX - 5
+        carRedX = carRedX - 5
     }
 
-    if (carX > 800) {
+    if (carRedX > 800) {
         carGoingForward = false
-        carY = carY - 25
+        carRedY = carRedY - 25
     }
 
-    if (carX < -20) {
-        carGoingForward = true
-        carY = carY + 25
+    if (carRedX < -20) {
+         carGoingForward = true
+        carRedY = carRedY + 25
     }
-} 
+}
 
 var animateNextFrame = function() {
     drawFrame()
