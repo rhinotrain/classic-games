@@ -85,9 +85,18 @@ var drawCity = function() {
 }
 
 var drawPylon = function(x,y) {
-    ctx.fillStyle = 'brown'
-    ctx.fillRect(x,y,10,45)
-    ctx.fillRect(x - 10,y + 5,30,5)
+    ctx.fillStyle = 'brown' // long pole
+    ctx.fillRect(x, y, 10, 45)
+    ctx.fillRect(x - 10, y + 5, 30, 5)
+    ctx.fillRect(x - 5, y + 9, 10, 2.5)
+
+    ctx.fillStyle = 'black' // shade
+    ctx.fillRect(x + 7, y, 3, 45)
+    ctx.fillRect(x - 10, y + 9, 30, 2.5)
+
+    ctx.fillStyle = 'brown' // middle
+    ctx.fillRect(x, y + 9, 7, 2.5)
+    
 }
 
 var drawPowerCable = function(x,y) {
@@ -198,9 +207,9 @@ var drawFrame = function () {
     drawWhiteCloud(whiteCloudX1, whiteCloudY1)
 
      if (whiteCloud1GoingForward) {
-        whiteCloudX1 = whiteCloudX1 + 5
+        whiteCloudX1 = whiteCloudX1 + 0.25
     } else {
-        whiteCloudX1 = whiteCloudX1 - 5
+        whiteCloudX1 = whiteCloudX1 - 0.25
     }
 
     if (whiteCloudX1 > 830) {
@@ -214,9 +223,9 @@ var drawFrame = function () {
     drawWhiteCloud(whiteCloudX2, whiteCloudY2)
 
     if (whiteCloud2GoingForward) {
-    whiteCloudX2 = whiteCloudX2 - 5
+    whiteCloudX2 = whiteCloudX2 - 0.25
     } else {
-    whiteCloudX2 = whiteCloudX2 + 5
+    whiteCloudX2 = whiteCloudX2 + 0.25
     }
 
     if (whiteCloudX2 > 830) {
