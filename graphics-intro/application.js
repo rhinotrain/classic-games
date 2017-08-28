@@ -155,23 +155,8 @@ var drawWhiteCloud = function(x, y) {
     ctx.fill()
 }
 
-var drawCarRed = function(x, y) {
-    ctx.fillStyle = 'red' // windows
-    ctx.fillRect(x, y, 40, 20)
-
-    ctx.fillRect(x+10, y-10, 20, 20)
-
-    ctx.fillStyle = 'black' // tires
-    ctx.fillRect(x + 5, y + 10, 10, 10)
-    ctx.fillRect(x + 25, y + 10, 10, 10)
-
-    ctx.fillStyle = 'white' // windows
-    ctx.fillRect(x + 10, y - 8, 5, 8)
-    ctx.fillRect(x + 25, y -8, 5, 8)
-}
-
-var drawCarBlue = function(x, y) {
-    ctx.fillStyle = 'blue' // car body
+var drawCar = function(x, y, colour) {
+    ctx.fillStyle = colour // windows
     ctx.fillRect(x, y, 40, 20)
 
     ctx.fillRect(x+10, y-10, 20, 20)
@@ -185,12 +170,12 @@ var drawCarBlue = function(x, y) {
     ctx.fillRect(x + 25, y -8, 5, 8)
 }   
 
-var carRedX = -20
-var carRedY = 415
-var carBlueX = 820
-var carBlueY = 515
-var redCarGoingForward = true
-var blueCarGoingForward = true
+var car1X = -20
+var car1Y = 415
+var car2X = 820
+var car2Y = 515
+var Car1GoingForward = true
+var Car2GoingForward = true
 var whiteCloudX1 = 80
 var whiteCloudY1 = 100
 var whiteCloudX2 = 700
@@ -242,40 +227,40 @@ var drawFrame = function () {
     drawWindowGrid(410, 230, 8, 3)
     drawWindowGrid(510, 160, 12, 4)
     drawPowerLines(0, 360, 17)
-    drawCarRed(carRedX, carRedY)
+    drawCar(car1X, car1Y, 'red') // red car
    
-    if (redCarGoingForward) {
-        carRedX = carRedX + 5
+    if (Car1GoingForward) {
+        car1X = car1X + 5
     } else {
-        carRedX = carRedX - 5
+        car1X = car1X - 5
     }
 
-    if (carRedX > 800) {
-        redCarGoingForward = false
-        carRedY = carRedY - 25
+    if (car1X > 800) {
+        Car1GoingForward = false
+        car1Y = car1Y - 25
     }
 
-    if (carRedX < -20) {
-         redCarGoingForward = true
-        carRedY = carRedY + 25
+    if (car1X < -20) {
+         Car1GoingForward = true
+        car1Y = car1Y + 25
     }
 
-    drawCarBlue(carBlueX, carBlueY)
+    drawCar(car2X, car2Y, 'blue') // blue car
    
-    if (blueCarGoingForward) {
-        carBlueX = carBlueX + 5
+    if (Car2GoingForward) {
+        car2X = car2X + 5
     } else {
-        carBlueX = carBlueX - 5
+        car2X = car2X - 5
     }
 
-    if (carBlueX > 800) {
-        blueCarGoingForward = false
-        carBlueY = carBlueY - 25
+    if (car2X > 800) {
+        Car2GoingForward = false
+        car2Y = car2Y - 25
     }
 
-    if (carBlueX < -20) {
-         blueCarGoingForward = true
-        carBlueY = carBlueY + 25
+    if (car2X < -20) {
+        Car2GoingForward = true
+        car2Y = car2Y + 25
     }
 }
 
