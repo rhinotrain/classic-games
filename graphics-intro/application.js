@@ -140,17 +140,33 @@ var drawWhiteCloud = function(x, y) {
 }
 
 var drawCarRed = function(x, y) {
-    ctx.fillStyle = 'red'
+    ctx.fillStyle = 'red' // windows
     ctx.fillRect(x, y, 40, 20)
 
     ctx.fillRect(x+10, y-10, 20, 20)
+
+    ctx.fillStyle = 'black' // tires
+    ctx.fillRect(x + 5, y + 10, 10, 10)
+    ctx.fillRect(x + 25, y + 10, 10, 10)
+
+    ctx.fillStyle = 'white' // windows
+    ctx.fillRect(x + 10, y - 8, 5, 8)
+    ctx.fillRect(x + 25, y -8, 5, 8)
 }
 
 var drawCarBlue = function(x, y) {
-    ctx.fillStyle = 'blue'
+    ctx.fillStyle = 'blue' // car body
     ctx.fillRect(x, y, 40, 20)
 
     ctx.fillRect(x+10, y-10, 20, 20)
+
+    ctx.fillStyle = 'black' // tires
+    ctx.fillRect(x + 5, y + 10, 10, 10)
+    ctx.fillRect(x + 25, y + 10, 10, 10)
+
+    ctx.fillStyle = 'white' // windows
+    ctx.fillRect(x + 10, y - 8, 5, 8)
+    ctx.fillRect(x + 25, y -8, 5, 8)
 }   
 
 var carRedX = -20
