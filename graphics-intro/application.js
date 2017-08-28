@@ -69,12 +69,19 @@ var drawRoad = function() {
 }
 
 var drawCity = function() {
-    ctx.fillStyle = 'grey'
+    ctx.fillStyle = 'grey' // building
     ctx.fillRect(150, 200, 100, 200)
     ctx.fillRect(280, 150, 110, 250)
     ctx.fillRect(400, 220, 90, 180)
     ctx.fillRect(500, 150, 110, 250)
     ctx.fillRect(325, 100, 20, 50)
+
+    ctx.fillStyle = 'black' // shade
+    ctx.fillRect(230, 200, 20, 200)
+    ctx.fillRect(375, 150, 20, 250)
+    ctx.fillRect(475, 220, 20, 180)
+    ctx.fillRect(590, 150, 20, 250)
+    ctx.fillRect(340, 100, 5, 50)
 }
 
 var drawPylon = function(x,y) {
