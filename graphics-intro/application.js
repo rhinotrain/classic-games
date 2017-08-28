@@ -158,46 +158,32 @@ var drawCar = function(x, y, colour) {
     ctx.fillRect(x + 25, y -8, 5, 8)
 }   
 
-var car1X = -20
-var car1Y = 415
-var car2X = 820
-var car2Y = 515
-var Car1GoingForward = true
-var Car2GoingForward = true
-var whiteCloudX1 = 80
-var whiteCloudY1 = 100
-var whiteCloudX2 = 700
-var whiteCloudY2 = 210
-var whiteCloudStartingPointX = -80
-var whiteCloudGoingForward = true
+var car1 = {x: -20, y: 415, goingForward: true, colour: 'red'}
+var car2 = {x: 820, y: 515, goingForward: true, colour: 'blue'}
+var cloud1 = {x: 80, y: 100, goingForward: true}
+var cloud2 = {x: 700, y: 210, goingForward: true}
 
-var drawFrame = function () { 
+// misc variables
+
+var whiteCloudStartingPointX = -80
+
+var drawFrame = function () { // animation
     drawSkyBox()
     drawLineOfTrees(12, 395, 33, true)
     drawLineOfTrees(0, 395, 33, false)
     drawRoad()
-    drawWhiteCloud(whiteCloudX1, whiteCloudY1)
+    drawWhiteCloud(cloud1.x, cloud1.y)
 
-     if (whiteCloudGoingForward) {
-        whiteCloudX1 = whiteCloudX1 + 0.25
-    } else {
-        whiteCloudX1 = whiteCloudX1 - 0.25
+    cloud1.x = cloud1.x + 0.25
+    if (cloud1.x > 830) {
+        cloud1.x = whiteCloudStartingPointX 
     }
 
-    if (whiteCloudX1 > 830) {
-        whiteCloudX1 = whiteCloudStartingPointX 
-    }
+    drawWhiteCloud(cloud2.x, cloud2.y)
 
-    drawWhiteCloud(whiteCloudX2, whiteCloudY2)
-
-    if (whiteCloudGoingForward) {
-    whiteCloudX2 = whiteCloudX2 + 0.25
-    } else {
-    whiteCloudX2 = whiteCloudX2 - 0.25
-    }
-
-    if (whiteCloudX2 > 830) {
-        whiteCloudX2 = whiteCloudStartingPointX 
+    cloud2.x = cloud2.x + 0.25
+    if (cloud2.x > 830) {
+        cloud2.x = whiteCloudStartingPointX 
     }
     
 
@@ -207,40 +193,40 @@ var drawFrame = function () {
     drawWindowGrid(410, 230, 8, 3)
     drawWindowGrid(510, 160, 12, 4)
     drawPowerLines(0, 360, 17)
-    drawCar(car1X, car1Y, 'red') // red car
+    drawCar(car1.x, car1.y, car1.colour) // red car
    
-    if (Car1GoingForward) {
-        car1X = car1X + 5
+    if (car1.goingForward) {
+        car1.x = car1.x + 5
     } else {
-        car1X = car1X - 5
+        car1.x = car1.x - 5
     }
 
-    if (car1X > 800) {
-        Car1GoingForward = false
-        car1Y = car1Y - 25
+    if (car1.x > 800) {
+        car1.goingForward = false
+        car1.y = car1.y - 25
     }
 
-    if (car1X < -20) {
-         Car1GoingForward = true
-        car1Y = car1Y + 25
+    if (car1.x < -20) {
+         car1.goingForward = true
+        car1.y = car1.y + 25
     }
 
-    drawCar(car2X, car2Y, 'blue') // blue car
+    drawCar(car2.x, car2.y, car2.colour) // blue car
    
-    if (Car2GoingForward) {
-        car2X = car2X + 5
+    if (car2.goingForward) {
+        car2.x = car2.x + 5
     } else {
-        car2X = car2X - 5
+        car2.x = car2.x - 5
     }
 
-    if (car2X > 800) {
-        Car2GoingForward = false
-        car2Y = car2Y - 25
+    if (car2.x > 800) {
+        car2.goingForward = false
+        car2.y = car2.y - 25
     }
 
-    if (car2X < -20) {
-        Car2GoingForward = true
-        car2Y = car2Y + 25
+    if (car2.x < -20) {
+        car2.goingForward = true
+        car2.y = car2.y + 25
     }
 }
 
