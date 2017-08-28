@@ -158,6 +158,14 @@ var drawCar = function(x, y, colour) {
     ctx.fillRect(x + 25, y -8, 5, 8)
 }   
 
+var calculateNewCloudX = function(x) {
+    x = x + 0.25
+    if (x > 830) {
+        x = whiteCloudStartingPointX 
+    }
+    return x
+}
+
 var car1 = {x: -20, y: 415, goingForward: true, colour: 'red'}
 var car2 = {x: 820, y: 515, goingForward: true, colour: 'blue'}
 var cloud1 = {x: 80, y: 100, goingForward: true}
@@ -172,20 +180,14 @@ var drawFrame = function () { // animation
     drawLineOfTrees(12, 395, 33, true)
     drawLineOfTrees(0, 395, 33, false)
     drawRoad()
+
     drawWhiteCloud(cloud1.x, cloud1.y)
 
-    cloud1.x = cloud1.x + 0.25
-    if (cloud1.x > 830) {
-        cloud1.x = whiteCloudStartingPointX 
-    }
+    cloud1.x = calculateNewCloudX(cloud1.x)
 
     drawWhiteCloud(cloud2.x, cloud2.y)
 
-    cloud2.x = cloud2.x + 0.25
-    if (cloud2.x > 830) {
-        cloud2.x = whiteCloudStartingPointX 
-    }
-    
+    cloud2.x = calculateNewCloudX(cloud2.x)
 
     drawCity()
     drawWindowGrid(160, 210, 9, 3)
