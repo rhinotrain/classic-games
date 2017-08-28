@@ -1,4 +1,4 @@
-console.log("Hello! Merge the window functions guy!")
+console.log("Hello! Is there a way to fix the car layering issue?")
 
 var canvas = document.getElementById("bob")
 var ctx = canvas.getContext('2d')
@@ -155,12 +155,16 @@ var drawCarBlue = function(x, y) {
 
 var carRedX = -20
 var carRedY = 415
-var carBlueX = 810
-var carBlueY = 395
-var whiteCloudX = 80
-var whiteCloudY = 100
-var carGoingForward = true
-var whiteCloudGoingForward = true
+var carBlueX = 820
+var carBlueY = 515
+var redCarGoingForward = true
+var blueCarGoingForward = true
+var whiteCloudX1 = 80
+var whiteCloudY1 = 100
+var whiteCloudX2 = 700
+var whiteCloudY2 = 150
+var whiteCloud1GoingForward = true
+var whiteCloud2GoingForward = true
 
 var drawFrame = function () { 
     drawSkyBox()
@@ -168,20 +172,36 @@ var drawFrame = function () {
     drawBackLineOfTrees(-15, 395, 34)
     drawFrontLineOfTrees(0, 395, 33)
     drawRoad()
-    drawWhiteCloud(whiteCloudX, whiteCloudY)
+    drawWhiteCloud(whiteCloudX1, whiteCloudY2)
 
-     if (whiteCloudGoingForward) {
-        whiteCloudX = whiteCloudX + 0.5
+     if (whiteCloud1GoingForward) {
+        whiteCloudX1 = whiteCloudX1 + 5
     } else {
-        whiteCloudX = whiteCloudX - 0.5
+        whiteCloudX1 = whiteCloudX1 - 5
     }
 
-    if (whiteCloudX > 830) {
+    if (whiteCloudX1 > 830) {
         whiteCloudGoingForward = false
     }
 
-    if (whiteCloudX < -80) {
+    if (whiteCloudX1 < -80) {
          whiteCloudGoingForward = true
+    }
+
+    drawWhiteCloud(whiteCloudX2, whiteCloudY2)
+
+    if (whiteCloud2GoingForward) {
+    whiteCloudX2 = whiteCloudX2 - 5
+    } else {
+    whiteCloudX2 = whiteCloudX2 + 5
+    }
+
+    if (whiteCloudX2 > 830) {
+    whiteCloudGoingForward = false
+    }
+
+    if (whiteCloudX2 < -80) {
+    whiteCloudGoingForward = true
     }
 
     drawCity()
@@ -192,20 +212,38 @@ var drawFrame = function () {
     drawPowerLines(0, 360, 17)
     drawCarRed(carRedX, carRedY)
    
-    if (carGoingForward) {
+    if (redCarGoingForward) {
         carRedX = carRedX + 5
     } else {
         carRedX = carRedX - 5
     }
 
     if (carRedX > 800) {
-        carGoingForward = false
+        redCarGoingForward = false
         carRedY = carRedY - 25
     }
 
     if (carRedX < -20) {
-         carGoingForward = true
+         redCarGoingForward = true
         carRedY = carRedY + 25
+    }
+
+    drawCarBlue(carBlueX, carBlueY)
+   
+    if (blueCarGoingForward) {
+        carBlueX = carBlueX + 5
+    } else {
+        carBlueX = carBlueX - 5
+    }
+
+    if (carBlueX > 800) {
+        blueCarGoingForward = false
+        carBlueY = carBlueY - 25
+    }
+
+    if (carBlueX < -20) {
+         blueCarGoingForward = true
+        carBlueY = carBlueY + 25
     }
 }
 
