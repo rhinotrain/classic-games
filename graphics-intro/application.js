@@ -180,8 +180,8 @@ var whiteCloudX1 = 80
 var whiteCloudY1 = 100
 var whiteCloudX2 = 700
 var whiteCloudY2 = 210
-var whiteCloud1GoingForward = true
-var whiteCloud2GoingForward = true
+var whiteCloudStartingPointX = -80
+var whiteCloudGoingForward = true
 
 var drawFrame = function () { 
     drawSkyBox()
@@ -191,35 +191,28 @@ var drawFrame = function () {
     drawRoad()
     drawWhiteCloud(whiteCloudX1, whiteCloudY1)
 
-     if (whiteCloud1GoingForward) {
+     if (whiteCloudGoingForward) {
         whiteCloudX1 = whiteCloudX1 + 0.25
     } else {
         whiteCloudX1 = whiteCloudX1 - 0.25
     }
 
     if (whiteCloudX1 > 830) {
-        whiteCloud1GoingForward = false
-    }
-
-    if (whiteCloudX1 < -80) {
-         whiteCloud1GoingForward = true
+        whiteCloudX1 = whiteCloudStartingPointX 
     }
 
     drawWhiteCloud(whiteCloudX2, whiteCloudY2)
 
-    if (whiteCloud2GoingForward) {
-    whiteCloudX2 = whiteCloudX2 - 0.25
-    } else {
+    if (whiteCloudGoingForward) {
     whiteCloudX2 = whiteCloudX2 + 0.25
+    } else {
+    whiteCloudX2 = whiteCloudX2 - 0.25
     }
 
     if (whiteCloudX2 > 830) {
-    whiteCloud2GoingForward = true
+        whiteCloudX2 = whiteCloudStartingPointX 
     }
-
-    if (whiteCloudX2 < -80) {
-    whiteCloud2GoingForward = false
-    }
+    
 
     drawCity()
     drawWindowGrid(160, 210, 9, 3)
