@@ -166,6 +166,24 @@ var calculateNewCloudX = function(x) {
     return x
 }
 
+var updateCar = function(car) {
+    if (car.goingForward) {
+        car.x = car.x + 5
+    } else {
+        car.x = car.x - 5
+    }
+
+    if (car.x > 800) {
+        car.goingForward = false
+        car.y = car.y - 25
+    }
+
+    if (car.x < -20) {
+        car.goingForward = true
+        car.y = car.y + 25
+    }
+}
+
 var car1 = {x: -20, y: 415, goingForward: true, colour: 'red'}
 var car2 = {x: 820, y: 515, goingForward: true, colour: 'blue'}
 var cloud1 = {x: 80, y: 100, goingForward: true}
@@ -182,11 +200,9 @@ var drawFrame = function () { // animation
     drawRoad()
 
     drawWhiteCloud(cloud1.x, cloud1.y)
-
     cloud1.x = calculateNewCloudX(cloud1.x)
 
     drawWhiteCloud(cloud2.x, cloud2.y)
-
     cloud2.x = calculateNewCloudX(cloud2.x)
 
     drawCity()
@@ -195,41 +211,12 @@ var drawFrame = function () { // animation
     drawWindowGrid(410, 230, 8, 3)
     drawWindowGrid(510, 160, 12, 4)
     drawPowerLines(0, 360, 17)
+
     drawCar(car1.x, car1.y, car1.colour) // red car
+    updateCar(car1)
    
-    if (car1.goingForward) {
-        car1.x = car1.x + 5
-    } else {
-        car1.x = car1.x - 5
-    }
-
-    if (car1.x > 800) {
-        car1.goingForward = false
-        car1.y = car1.y - 25
-    }
-
-    if (car1.x < -20) {
-         car1.goingForward = true
-        car1.y = car1.y + 25
-    }
-
     drawCar(car2.x, car2.y, car2.colour) // blue car
-   
-    if (car2.goingForward) {
-        car2.x = car2.x + 5
-    } else {
-        car2.x = car2.x - 5
-    }
-
-    if (car2.x > 800) {
-        car2.goingForward = false
-        car2.y = car2.y - 25
-    }
-
-    if (car2.x < -20) {
-        car2.goingForward = true
-        car2.y = car2.y + 25
-    }
+    updateCar(car2)
 }
 
 var animateNextFrame = function() {
