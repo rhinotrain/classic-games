@@ -162,7 +162,7 @@ var blueCarGoingForward = true
 var whiteCloudX1 = 80
 var whiteCloudY1 = 100
 var whiteCloudX2 = 700
-var whiteCloudY2 = 150
+var whiteCloudY2 = 210
 var whiteCloud1GoingForward = true
 var whiteCloud2GoingForward = true
 
@@ -172,7 +172,7 @@ var drawFrame = function () {
     drawBackLineOfTrees(-15, 395, 34)
     drawFrontLineOfTrees(0, 395, 33)
     drawRoad()
-    drawWhiteCloud(whiteCloudX1, whiteCloudY2)
+    drawWhiteCloud(whiteCloudX1, whiteCloudY1)
 
      if (whiteCloud1GoingForward) {
         whiteCloudX1 = whiteCloudX1 + 5
@@ -181,11 +181,11 @@ var drawFrame = function () {
     }
 
     if (whiteCloudX1 > 830) {
-        whiteCloudGoingForward = false
+        whiteCloud1GoingForward = false
     }
 
     if (whiteCloudX1 < -80) {
-         whiteCloudGoingForward = true
+         whiteCloud1GoingForward = true
     }
 
     drawWhiteCloud(whiteCloudX2, whiteCloudY2)
@@ -197,11 +197,11 @@ var drawFrame = function () {
     }
 
     if (whiteCloudX2 > 830) {
-    whiteCloudGoingForward = false
+    whiteCloud2GoingForward = true
     }
 
     if (whiteCloudX2 < -80) {
-    whiteCloudGoingForward = true
+    whiteCloud2GoingForward = false
     }
 
     drawCity()
