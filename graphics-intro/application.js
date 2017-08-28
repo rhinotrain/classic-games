@@ -4,12 +4,9 @@ var canvas = document.getElementById("bob")
 var ctx = canvas.getContext('2d')
 
 var drawSkyBox = function() {
-    ctx.fillStyle = 'cyan'
+    ctx.fillStyle = 'cyan' // sky
     ctx.fillRect(0,0,800,600)
-}
-
-var drawGround = function() {
-    ctx.fillStyle = 'green'
+    ctx.fillStyle = 'green' // ground
     ctx.fillRect(0,400,800,200)
 }
 
@@ -35,19 +32,10 @@ var drawTree = function(x, y, isDarkGreen) {
     ctx.fill()
 }
 
-var drawFrontLineOfTrees = function(x, y, length) {
+var drawLineOfTrees = function(x, y, length, isDarkGreen) {
     var treeCount = 0
     do {
-        drawTree(x, y, false)
-        x = x + 25
-        treeCount += 1
-    } while (length > treeCount)
-}
-
-var drawBackLineOfTrees = function(x, y, length) {
-    var treeCount = 0
-    do {
-        drawTree(x, y, true)
+        drawTree(x, y, isDarkGreen)
         x = x + 25
         treeCount += 1
     } while (length > treeCount)
@@ -185,9 +173,8 @@ var whiteCloudGoingForward = true
 
 var drawFrame = function () { 
     drawSkyBox()
-    drawGround()
-    drawBackLineOfTrees(-15, 395, 34)
-    drawFrontLineOfTrees(0, 395, 33)
+    drawLineOfTrees(12, 395, 33, true)
+    drawLineOfTrees(0, 395, 33, false)
     drawRoad()
     drawWhiteCloud(whiteCloudX1, whiteCloudY1)
 
