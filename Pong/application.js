@@ -17,17 +17,28 @@ var keyState2 = {
   right: false,
 }
 
-var drawBat = function(x, y) {
+var drawPaddle = function(x, y) {
     ctx.fillStyle = 'white'
     ctx.fillRect(x, y, 20, 80)
 }
 
+
 var barY = 30
+
 
 var drawFrame = function () { // animation
     ctx.fillStyle = 'black' // background
-    ctx.fillRect(0,0,800,600)
-    drawBat(150, barY)
+
+    ctx.fillRect(0,0,800,600) // paddleLeft
+    drawPaddle(100, barY)
+    if (keyState2.up) {
+        barY = barY - 5
+    }
+
+    if (keyState2.down) {
+        barY = barY + 5
+    }
+     drawPaddle(650, barY) // paddleRight
     if (keyState.up) {
         barY = barY - 5
     }
@@ -35,7 +46,6 @@ var drawFrame = function () { // animation
     if (keyState.down) {
         barY = barY + 5
     }
-    console.log(keyState, keyState2)
 }
 
 
