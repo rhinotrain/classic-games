@@ -1,3 +1,4 @@
+console.log ("Why does wasd move paddle slower than arrow keys?")
 var canvas = document.getElementById("screen")
 var ctx = canvas.getContext('2d')
 
