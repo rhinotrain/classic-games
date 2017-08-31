@@ -9,7 +9,7 @@ var drawBaseBackground = function() { // background
     ctx.fillRect(0, 400, 800, 200)
 }
 
-var drawRoad = function() {
+var drawRoad = function() { // road
     ctx.fillStyle = 'grey'
     ctx.fillRect(0, 400, 800, 40)
     ctx.fillStyle = 'yellow'
@@ -23,7 +23,7 @@ var drawRoad = function() {
     } while (roadCount < 21)
 }
 
-var drawCitySign = function() {
+var drawCitySign = function() { // city sign graphic
     ctx.fillStyle = 'grey'
     ctx.fillRect (410, 350, 7.5, 60)
     ctx.fillRect (480, 350, 7.5, 60)
@@ -33,14 +33,26 @@ var drawCitySign = function() {
     ctx.fillRect (400, 300, 100, 60)
 }
 
-var drawCitySignText = function() {
+var drawCitySignText = function() { // city sign text
     ctx.fillStyle = 'white'
     ctx.font = '16px serif'
     ctx.fillText('CODE CITY', 408, 320)
+
+    ctx.font = '10px serif'
+    ctx.fillText('60 Miles', 420, 345)
+
+    ctx.fillStyle = 'white' // arrow
+    ctx.fillRect ( 412, 328, 5, 25)
+    ctx.fillRect ( 412, 350, 50, 5)
+    ctx.beginPath()
+    ctx.moveTo(462, 355)
+    ctx.lineTo(492, 355)
+    ctx.lineTo(462, 335)
+    ctx.fill()
 }
 
 
-var drawFrame = function() {
+var drawFrame = function() { // animation
     drawBaseBackground()
     drawRoad()
     drawCitySign()
