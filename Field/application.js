@@ -34,8 +34,9 @@ var drawCitySign = function() {
 }
 
 var drawCitySignText = function() {
-    ctx.font = '48px serif'
-    ctx.fillText('CODE CITY', 10, 50)
+    ctx.fillStyle = 'white'
+    ctx.font = '16px serif'
+    ctx.fillText('CODE CITY', 408, 320)
 }
 
 
