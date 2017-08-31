@@ -193,7 +193,7 @@ var cloud2 = {x: 700, y: 210, goingForward: true}
 
 var whiteCloudStartingPointX = -80
 
-var drawFrame = function () { // animation
+var drawFrame = function() { // animation
     drawSkyBox()
     drawLineOfTrees(12, 395, 33, true)
     drawLineOfTrees(0, 395, 33, false)
