@@ -2,9 +2,20 @@ console.log ("On the road to Code City!")
 var canvas = document.getElementById("field")
 var ctx = canvas.getContext('2d')
 
-var drawBaseBackground = function() { // background
-    ctx.fillStyle = 'cyan'
-    ctx.fillRect(0, 0, 800, 600) 
+var drawSkyBox = function() {
+    ctx.fillStyle = '#EFFBFB'
+    ctx.fillRect(0, 0, 800, 600)
+    ctx.fillStyle = '#CEF6F5'
+    ctx.fillRect(0, 75, 800, 50) 
+    ctx.fillStyle = '#81F7F3'
+    ctx.fillRect(0, 125, 800, 75) 
+    ctx.fillStyle = '#2EFEF7'
+    ctx.fillRect(0, 200, 800, 80) 
+    ctx.fillStyle = '#00FFFF'
+    ctx.fillRect(0, 250, 800, 100)  
+}
+
+var drawGround = function() { // ground
     ctx.fillStyle = 'green'
     ctx.fillRect(0, 400, 800, 200)
 }
@@ -51,9 +62,26 @@ var drawCitySignText = function() { // city sign text
     ctx.fill()
 }
 
+var drawHill = function(x, y, size) { // basic hill 
+    ctx.fillStyle = '#04B404'
+    ctx.beginPath()
+    ctx.arc(x, y, size, 0, Math.PI * 2, true)
+    ctx.fill()
+}
+
+var drawDarkHill = function(x, y, size) { // basic hill 
+    ctx.fillStyle = '#298A08'
+    ctx.beginPath()
+    ctx.arc(x, y, size, 0, Math.PI * 2, true)
+    ctx.fill()
+}
 
 var drawFrame = function() { // animation
-    drawBaseBackground()
+    drawSkyBox()
+    drawHill(50, 500, 250)
+    drawHill(670, 500, 250)
+    drawDarkHill(350, 600, 290)
+    drawGround()
     drawRoad()
     drawCitySign()
     drawCitySignText()
