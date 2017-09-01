@@ -18,9 +18,12 @@ var keyState2 = {
   right: false,
 }
 
+const PADDLE_WIDTH = 20
+const PADDLE_HEIGHT = 80
+
 var drawPaddle = function(x, y) {
     ctx.fillStyle = 'white'
-    ctx.fillRect(x, y, 20, 80)
+    ctx.fillRect(x, y, PADDLE_WIDTH, PADDLE_HEIGHT)
 }
 
 var drawBall = function(x, y, size) {
@@ -39,26 +42,30 @@ var paddle1Y = 30
 var paddle2Y = 30
 var ball = {x: 400, y: 300,size: 10}
 
+const SCREEN_HEIGHT = canvas.clientHeight
+
+const BORDER_PADDING = 5
+const PADDLE_SPEED = 5
 
 var drawFrame = function () { // animation
     ctx.fillStyle = 'black' // background
     
     ctx.fillRect(0,0,800,600) // paddleLeft
     drawPaddle(100, paddle1Y)
-    if (keyState2.up && paddle1Y > 5) {
-        paddle1Y = paddle1Y - 5
+    if (keyState2.up && paddle1Y > BORDER_PADDING) {
+        paddle1Y = paddle1Y - PADDLE_SPEED
     }
 
-    if (keyState2.down && paddle1Y < 512) {
-        paddle1Y = paddle1Y + 5
+    if (keyState2.down && paddle1Y < SCREEN_HEIGHT - BORDER_PADDING - PADDLE_HEIGHT) {
+        paddle1Y = paddle1Y + PADDLE_SPEED
     }
     drawPaddle(650, paddle2Y) // paddleRight
-    if (keyState.up && paddle2Y > 5) {
-        paddle2Y = paddle2Y - 5
+    if (keyState.up && paddle2Y > BORDER_PADDING) {
+        paddle2Y = paddle2Y - PADDLE_SPEED
     }
 
-    if (keyState.down && paddle2Y < 512) {
-        paddle2Y = paddle2Y + 5
+    if (keyState.down && paddle2Y < SCREEN_HEIGHT - BORDER_PADDING - PADDLE_HEIGHT) {
+        paddle2Y = paddle2Y + PADDLE_SPEED
     }
 
     drawBall(ball.x, ball.y, ball.size)
