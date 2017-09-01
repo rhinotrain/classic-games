@@ -44,18 +44,38 @@ var drawBall = function(x, y, size) {
 }
 
 var updateBall = function(ball) {
-    if (ball.x < 800) {
-        ball.x = ball.x + 1
+    if (ball.goingForward) {
+        ball.x = ball.x + 5
+    } else {
+        ball.x = ball.x - 5
     }
 
-    if (ball.y > 0) {
-        ball.y = ball.y - 1
+    if (ball.x > 800) {
+        ball.goingForward = false
+    }
+
+    if (ball.x < 0) {
+        ball.goingForward = true
+    }
+
+    if (ball.goingUp) {
+        ball.y = ball.y - 5
+    } else {
+        ball.y = ball.y + 5
+    }
+
+    if (ball.y < 0) {
+        ball.goingUp = false
+    }
+
+     if (ball.y > 600) {
+        ball.goingUp = true
     }
 }
 
 var paddle1 = {x: 100, y: 30}
 var paddle2 = {x: 650, y: 30}
-var ball = {x: 400, y: 300, size: 10}
+var ball = {x: 400, y: 300, size: 10, goingForward: true, goingUp: true}
 
 const SCREEN_HEIGHT = canvas.clientHeight
 const BORDER_PADDING = 5
