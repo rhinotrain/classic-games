@@ -26,7 +26,7 @@ var drawPaddle = function(x, y) {
     ctx.fillRect(x, y, PADDLE_WIDTH, PADDLE_HEIGHT)
 }
 
-var updatePaddle = function(keyState,paddle) {
+var updatePaddle = function(paddle, keyState) {
     if (keyState.up && paddle.y > BORDER_PADDING) {
         paddle.y = paddle.y - PADDLE_SPEED
     }
@@ -61,14 +61,13 @@ var drawFrame = function () { // animation
     
     ctx.fillRect(0,0,800,600) // paddleLeft
     drawPaddle(paddle1.x, paddle1.y)
-    updatePaddle(keyState, paddle1)
+    updatePaddle(paddle1, keyState2)
 
     drawPaddle(paddle2.x, paddle2.y) // paddleRight
-    updatePaddle(keyState2, paddle2)
+    updatePaddle(paddle2, keyState)
 
     drawBall(ball.x, ball.y, ball.size)
     updateBall(ball)
-
 }
 
 var animateNextFrame = function() {
