@@ -50,11 +50,11 @@ var updateBall = function(ball) {
         ball.x = ball.x - 5
     }
 
-    if (ball.x > 800) {
+    if (ball.x > 795) {
         ball.goingForward = false
     }
 
-    if (ball.x < 0) {
+    if (ball.x < 5) {
         ball.goingForward = true
     }
 
@@ -64,11 +64,11 @@ var updateBall = function(ball) {
         ball.y = ball.y + 5
     }
 
-    if (ball.y < 0) {
+    if (ball.y < 5) {
         ball.goingUp = false
     }
 
-     if (ball.y > 600) {
+     if (ball.y > 595) {
         ball.goingUp = true
     }
 }
