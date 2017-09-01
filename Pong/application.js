@@ -45,21 +45,22 @@ var drawFrame = function () { // animation
     
     ctx.fillRect(0,0,800,600) // paddleLeft
     drawPaddle(100, paddle1Y)
-    if (keyState2.up) {
+    if (keyState2.up && paddle1Y > 5) {
         paddle1Y = paddle1Y - 5
     }
 
-    if (keyState2.down) {
+    if (keyState2.down && paddle1Y < 512) {
         paddle1Y = paddle1Y + 5
     }
     drawPaddle(650, paddle2Y) // paddleRight
-    if (keyState.up) {
+    if (keyState.up && paddle2Y > 5) {
         paddle2Y = paddle2Y - 5
     }
 
-    if (keyState.down) {
+    if (keyState.down && paddle2Y < 512) {
         paddle2Y = paddle2Y + 5
     }
+
     drawBall(ball.x, ball.y, ball.size)
     updateBall(ball)
 
