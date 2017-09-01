@@ -44,8 +44,13 @@ var drawBall = function(x, y, size) {
 }
 
 var updateBall = function(ball) {
-    ball.x = ball.x + 0.50
-    ball.y = ball.y - 0.50
+    if (ball.x < 800) {
+        ball.x = ball.x + 1
+    }
+
+    if (ball.y > 0) {
+        ball.y = ball.y - 1
+    }
 }
 
 var paddle1 = {x: 100, y: 30}
