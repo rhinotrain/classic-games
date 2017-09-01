@@ -23,14 +23,25 @@ var drawPaddle = function(x, y) {
     ctx.fillRect(x, y, 20, 80)
 }
 
+var drawBall = function(x, y, size) {
+    ctx.fillStyle = 'white'
+    ctx.beginPath()
+    ctx.arc(x, y, size, 0, Math.PI * 2, true)
+    ctx.fill()
+}
+
+var updateBall = function(ball) {
+        ball.x = ball.x + 0.05
+}
 
 var paddle1Y = 30
 var paddle2Y = 30
+var ball = {x:400, y:300,size:10}
 
 
 var drawFrame = function () { // animation
     ctx.fillStyle = 'black' // background
-
+    
     ctx.fillRect(0,0,800,600) // paddleLeft
     drawPaddle(100, paddle1Y)
     if (keyState2.up) {
@@ -48,8 +59,10 @@ var drawFrame = function () { // animation
     if (keyState.down) {
         paddle2Y = paddle2Y + 5
     }
-}
+    drawBall(ball.x, ball.y, ball.size)
+    updateBall(ball)
 
+}
 
 var animateNextFrame = function() {
     drawFrame()
