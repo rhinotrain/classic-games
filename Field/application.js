@@ -53,8 +53,8 @@ var drawCitySignText = function() { // city sign text
     ctx.fillText('60 Miles', 420, 345)
 
     ctx.fillStyle = 'white' // arrow
-    ctx.fillRect ( 412, 328, 5, 25)
-    ctx.fillRect ( 412, 350, 50, 5)
+    ctx.fillRect(412, 328, 5, 25)
+    ctx.fillRect(412, 350, 50, 5)
     ctx.beginPath()
     ctx.moveTo(462, 355)
     ctx.lineTo(492, 355)
@@ -76,6 +76,24 @@ var drawDarkHill = function(x, y, size) { // basic hill
     ctx.fill()
 }
 
+var drawFence = function(x, y) {
+    ctx.fillStyle = 'brown'
+    ctx.fillRect(x, y, 2.5, 20)
+    ctx.fillRect(x + 20, y, 2.5, 20)
+    ctx.fillRect(x - 2.5, y + 12, 28, 2.5)
+    ctx.fillRect(x - 2.5, y + 3, 28, 2.5)
+}
+
+var drawFenceLine = function(x, y, length) {
+    var fenceCount = 0
+    do {
+        drawFence(x, y)
+        x = x + 22
+        fenceCount += 1
+    } while (length > fenceCount) 
+}
+
+
 var drawFrame = function() { // animation
     drawSkyBox()
     drawHill(50, 500, 250)
@@ -85,6 +103,8 @@ var drawFrame = function() { // animation
     drawRoad()
     drawCitySign()
     drawCitySignText()
+    drawFenceLine(0, 380, 37)
+    drawFenceLine(0, 425, 37)
 }
 
 var animateNextFrame = function() {
