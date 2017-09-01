@@ -91,8 +91,7 @@ var drawFenceLine = function(x, y, length) {
         x = x + 22
         fenceCount += 1
     } while (length > fenceCount) 
-}
-
+} 
 
 var drawFrame = function() { // animation
     drawSkyBox()
@@ -105,6 +104,7 @@ var drawFrame = function() { // animation
     drawCitySignText()
     drawFenceLine(0, 380, 37)
     drawFenceLine(0, 425, 37)
+
 }
 
 var animateNextFrame = function() {

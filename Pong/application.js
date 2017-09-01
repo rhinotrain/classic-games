@@ -24,28 +24,29 @@ var drawPaddle = function(x, y) {
 }
 
 
-var barY = 30
+var paddle1Y = 30
+var paddle2Y = 30
 
 
 var drawFrame = function () { // animation
     ctx.fillStyle = 'black' // background
 
     ctx.fillRect(0,0,800,600) // paddleLeft
-    drawPaddle(100, barY)
+    drawPaddle(100, paddle1Y)
     if (keyState2.up) {
-        barY = barY - 5
+        paddle1Y = paddle1Y - 5
     }
 
     if (keyState2.down) {
-        barY = barY + 5
+        paddle1Y = paddle1Y + 5
     }
-     drawPaddle(650, barY) // paddleRight
+    drawPaddle(650, paddle2Y) // paddleRight
     if (keyState.up) {
-        barY = barY - 5
+        paddle2Y = paddle2Y - 5
     }
 
     if (keyState.down) {
-        barY = barY + 5
+        paddle2Y = paddle2Y + 5
     }
 }
 
@@ -65,10 +66,10 @@ document.addEventListener('keydown', function(e) {
   if (keyName == "ArrowLeft"  || keyName == "Left")  keyState.left = true
   if (keyName == "ArrowRight" || keyName == "Right")  keyState.right = true
 
-  if (keyName == "ArrowUp"    || keyName == "w")    keyState2.up = true
-  if (keyName == "ArrowDown"  || keyName == "s")  keyState2.down = true
-  if (keyName == "ArrowLeft"  || keyName == "a")  keyState2.left = true
-  if (keyName == "ArrowRight" || keyName == "d")  keyState2.right = true
+  if (keyName == "w")    keyState2.up = true
+  if (keyName == "s")  keyState2.down = true
+  if (keyName == "a")  keyState2.left = true
+  if (keyName == "d")  keyState2.right = true
 })
 
 document.addEventListener('keyup', function(e) {
@@ -77,10 +78,9 @@ document.addEventListener('keyup', function(e) {
   if (keyName == "ArrowDown"  || keyName == "Down")  keyState.down = false
   if (keyName == "ArrowLeft"  || keyName == "Left")  keyState.left = false
   if (keyName == "ArrowRight" || keyName == "Right") keyState.right = false
-
     
-  if (keyName == "ArrowUp"    || keyName == "w")    keyState2.up = false
-  if (keyName == "ArrowDown"  || keyName == "s")  keyState2.down = false
-  if (keyName == "ArrowLeft"  || keyName == "a")  keyState2.left = false
-  if (keyName == "ArrowRight" || keyName == "Right") keyState2.right = false
+  if (keyName == "w")    keyState2.up = false
+  if (keyName == "s")  keyState2.down = false
+  if (keyName == "a")  keyState2.left = false
+  if (keyName == "d") keyState2.right = false
 })
