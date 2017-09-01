@@ -26,6 +26,17 @@ var drawPaddle = function(x, y) {
     ctx.fillRect(x, y, PADDLE_WIDTH, PADDLE_HEIGHT)
 }
 
+// var updatePaddle = function(paddle) {
+
+//     if (keyState2.up && paddle1Y > BORDER_PADDING) {
+//         paddle1Y = paddle1Y - PADDLE_SPEED
+//     }
+
+//     if (keyState2.down && paddle1Y < SCREEN_HEIGHT - BORDER_PADDING - PADDLE_HEIGHT) {
+//         paddle1Y = paddle1Y + PADDLE_SPEED
+//     }
+// }
+
 var drawBall = function(x, y, size) {
     ctx.fillStyle = 'white'
     ctx.beginPath()
@@ -38,12 +49,11 @@ var updateBall = function(ball) {
     ball.y = ball.y - 0.50
 }
 
-var paddle1Y = 30
-var paddle2Y = 30
-var ball = {x: 400, y: 300,size: 10}
+var paddle1 = {x: 100, y: 30}
+var paddle2 = {x: 650, y: 30}
+var ball = {x: 400, y: 300, size: 10}
 
 const SCREEN_HEIGHT = canvas.clientHeight
-
 const BORDER_PADDING = 5
 const PADDLE_SPEED = 5
 
@@ -51,21 +61,21 @@ var drawFrame = function () { // animation
     ctx.fillStyle = 'black' // background
     
     ctx.fillRect(0,0,800,600) // paddleLeft
-    drawPaddle(100, paddle1Y)
-    if (keyState2.up && paddle1Y > BORDER_PADDING) {
-        paddle1Y = paddle1Y - PADDLE_SPEED
+    drawPaddle(paddle1.x, paddle1.y)
+    if (keyState2.up && paddle1.y > BORDER_PADDING) {
+        paddle1.y = paddle1.y - PADDLE_SPEED
     }
 
-    if (keyState2.down && paddle1Y < SCREEN_HEIGHT - BORDER_PADDING - PADDLE_HEIGHT) {
-        paddle1Y = paddle1Y + PADDLE_SPEED
+    if (keyState2.down && paddle1.y < SCREEN_HEIGHT - BORDER_PADDING - PADDLE_HEIGHT) {
+        paddle1.y = paddle1.y + PADDLE_SPEED
     }
-    drawPaddle(650, paddle2Y) // paddleRight
-    if (keyState.up && paddle2Y > BORDER_PADDING) {
-        paddle2Y = paddle2Y - PADDLE_SPEED
+    drawPaddle(paddle2.x, paddle2.y) // paddleRight
+    if (keyState.up && paddle2.y > BORDER_PADDING) {
+        paddle2.y = paddle2.y - PADDLE_SPEED
     }
 
-    if (keyState.down && paddle2Y < SCREEN_HEIGHT - BORDER_PADDING - PADDLE_HEIGHT) {
-        paddle2Y = paddle2Y + PADDLE_SPEED
+    if (keyState.down && paddle2.y < SCREEN_HEIGHT - BORDER_PADDING - PADDLE_HEIGHT) {
+        paddle2.y = paddle2.y + PADDLE_SPEED
     }
 
     drawBall(ball.x, ball.y, ball.size)
