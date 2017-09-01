@@ -26,16 +26,15 @@ var drawPaddle = function(x, y) {
     ctx.fillRect(x, y, PADDLE_WIDTH, PADDLE_HEIGHT)
 }
 
-// var updatePaddle = function(paddle) {
+var updatePaddle = function(keyState,paddle) {
+    if (keyState.up && paddle.y > BORDER_PADDING) {
+        paddle.y = paddle.y - PADDLE_SPEED
+    }
 
-//     if (keyState2.up && paddle1Y > BORDER_PADDING) {
-//         paddle1Y = paddle1Y - PADDLE_SPEED
-//     }
-
-//     if (keyState2.down && paddle1Y < SCREEN_HEIGHT - BORDER_PADDING - PADDLE_HEIGHT) {
-//         paddle1Y = paddle1Y + PADDLE_SPEED
-//     }
-// }
+    if (keyState.down && paddle.y < SCREEN_HEIGHT - BORDER_PADDING - PADDLE_HEIGHT) {
+        paddle.y = paddle.y + PADDLE_SPEED
+    }
+}
 
 var drawBall = function(x, y, size) {
     ctx.fillStyle = 'white'
@@ -62,21 +61,10 @@ var drawFrame = function () { // animation
     
     ctx.fillRect(0,0,800,600) // paddleLeft
     drawPaddle(paddle1.x, paddle1.y)
-    if (keyState2.up && paddle1.y > BORDER_PADDING) {
-        paddle1.y = paddle1.y - PADDLE_SPEED
-    }
+    updatePaddle(keyState, paddle1)
 
-    if (keyState2.down && paddle1.y < SCREEN_HEIGHT - BORDER_PADDING - PADDLE_HEIGHT) {
-        paddle1.y = paddle1.y + PADDLE_SPEED
-    }
     drawPaddle(paddle2.x, paddle2.y) // paddleRight
-    if (keyState.up && paddle2.y > BORDER_PADDING) {
-        paddle2.y = paddle2.y - PADDLE_SPEED
-    }
-
-    if (keyState.down && paddle2.y < SCREEN_HEIGHT - BORDER_PADDING - PADDLE_HEIGHT) {
-        paddle2.y = paddle2.y + PADDLE_SPEED
-    }
+    updatePaddle(keyState2, paddle2)
 
     drawBall(ball.x, ball.y, ball.size)
     updateBall(ball)
