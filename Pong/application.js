@@ -31,12 +31,13 @@ var drawBall = function(x, y, size) {
 }
 
 var updateBall = function(ball) {
-        ball.x = ball.x + 0.05
+    ball.x = ball.x + 0.50
+    ball.y = ball.y - 0.50
 }
 
 var paddle1Y = 30
 var paddle2Y = 30
-var ball = {x:400, y:300,size:10}
+var ball = {x: 400, y: 300,size: 10}
 
 
 var drawFrame = function () { // animation
